@@ -1,0 +1,127 @@
+---
+import Layout from "@layouts/Layout.astro";
+
+import logoHojas from "@assets/svg/logoHojas.svg";
+import { Image } from "astro:assets";
+import DoctorProfile from "@components/DoctorProfile.astro";
+
+import imgDrRodrigo from "@assets/img/imgDrRodrigo.png";
+import imgNull from "@assets/img/imgNull.png";
+---
+
+<Layout title="Doctores">
+  <!-- Banner -->
+  <section class="container py-24 text-center">
+    <div class="container mx-auto">
+      <h1
+        class="font-title text-2xl md:text-4xl lg:text-5xl text-[#464966] mb-6 md:mb-10 lg:mb-16"
+      >
+        En Gynobs, tu salud ginecológica <br class="hidden md:inline" />
+        está en las mejores manos
+      </h1>
+
+      <!-- Aquí insertas el ícono SVG -->
+      <div class="mt-4 flex justify-center">
+        <!-- Reemplaza este div por tu SVG -->
+        <Image src={logoHojas} alt="Decorativo" class="size-24 lg:size-20" />
+      </div>
+    </div>
+  </section>
+
+  <section class="container px-4 lg:px-0">
+    <DoctorProfile
+      variant="default"
+      name="Dr. Rodrigo Zamora Escudero"
+      photo={imgDrRodrigo}
+      description="El Dr. Rodrigo Zamora es ginecólogo obstetra, miembro del Cuerpo Médico del Hospital Ángeles Lomas y profesor de posgrado en Ginecología y Obstetricia del mismo hospital junto a la UNAM. La relación con sus pacientes se caracteriza por ser cercana, profesional y brindar mucha confianza y tranquilidad a lo largo de cada proceso."
+      education={[
+        "<strong>Ginecología y obstetricia</strong><br/>Universidad Nacional Autónoma de México<br/>Céd. Especialidad 0011012",
+        "<strong>Endoscopía ginecológica</strong><br/>Alta especialidad<br/>Hospital Español de México",
+        "<strong>Médico Cirujano y Partero</strong><br/>Universidad Autónoma de Nuevo León<br/>Céd. Profesional 2276353",
+      ]}
+      institutions={[
+        "Miembro del Colegio de Ginecólogos y Obstetras del Hospital Español “Profesor Dr. Alfonso Álvarez Bravo”.",
+        "Miembro de SOMEAL (Sociedad Médica del Ángeles Lomas).",
+        "Miembro de la sociedad médica del Hospital Español de México.",
+        "Miembro del Colegio Mexicano de Ginecología y Obstetricia.",
+      ]}
+      testimonials={[
+        {
+          text: "Mi experiencia con el Dr. Zamora fue muy grata porque me tranquilizó de todos los temores que tenía, aclaró mis dudas y me dio instrucciones claras. Está totalmente calificado. No lo pensaría dos veces si tuviera que acudir con él.",
+          author: "Andrea Hernández.",
+        },
+        {
+          text: "El Dr. Zamora es mi médico desde hace muchos años y siempre me he sentido segura. Es un doctor muy cálido que siempre está al pendiente. Ahora con mi primer embarazo su acompañamiento fue magnífico desde la semana uno hasta el posparto. Mi bebé y yo no pudimos estar en mejores manos.",
+          author: "",
+        },
+        {
+          text: "Traer un bebé al mundo es de los momentos más mágicos que puedes vivir como mujer. Pero hacerlo acompañado de las mejores correctas es aún más especial. Gracias por acompañarnos y nunca soltarnos.",
+          author: "Fátima L.",
+        },
+      ]}
+    />
+
+    <DoctorProfile
+      variant="reversed-texture"
+      name="Dra. María José Robles Menchero"
+      photo={imgNull}
+      description="La Dra. María José es ginecóloga obstetra en el Hospital Ángeles Lomas. Se distingue por su compromiso con el bienestar de sus pacientes. Su profesionalismo, toque humano, y comunicación clara generan un ambiente de confianza. Además, le gusta escuchar a sus pacientes con atención, empatizar con su situación y brindar explicaciones detalladas para que la atención sea cercana."
+      education={[
+        "<strong>Ginecología y obstetricia</strong><br/>Céd. Especialidad 12451398<br/>Universidad Nacional Autónoma de México.",
+        "<strong>Médico Cirujano</strong><br/>Universidad La Salle<br/>Céd. Profesional 10101149",
+      ]}
+      testimonials={[
+        {
+          text: "Excelente doctora, me explicó con mucha paciencia todas mis dudas, me trató con mucho respeto y me hizo sentir segura. Volvería y la recomendaría sin dudarlo.",
+          author: "Emilia H.",
+        },
+        {
+          text: "Recomiendo ampliamente a la Dra. María José Robles, por sus conocimientos, por el interés y esmero que pone en cada uno de sus pacientes, por su atención tan cálida, por su manera clara de hablar, y por el diagnóstico y tratamiento tan atinados.",
+          author: "Rosario G.",
+        },
+        {
+          text: "La Dra María José ejemplifica todo lo que un doctor debe ser: amable, empática, altamente capacitada y actualizada, dedicación al 150% a sus pacientes y una calidad humana que es difícil encontrar hoy en día.",
+          author: "Alejandra.",
+        },
+      ]}
+      educationColor="bg-blue-900 text-white"
+      descriptionColor="bg-nude-400"
+      testimonialColor="bg-nude-400"
+    />
+
+    <DoctorProfile
+      variant="default"
+      name="Dr. Elías Charúa Levy"
+      photo={imgNull}
+      description="El Dr. Charúa es ginecólogo obstetra en el Hospital Ángeles Lomas y el Hospital Español de México, además de realizar Cirugía de Mínima Invasión. Su consulta se caracteriza por ser respetuosa con sus consultantes, brinda particular atención a cada uno de los procesos que debe realizar y se desempeña con total vocación."
+      education={[
+        "<strong>Ginecología y obstetricia</strong><br/>Céd. Especialidad 8536936<br/>Hospital Español de México",
+        "<strong>Endoscopía ginecológica</strong><br/>Alta especialidad<br/>Hospital Español de México",
+        "<strong>Médico Cirujano</strong><br/>Universidad Anáhuac Norte<br/>Céd. Profesional 6401367",
+      ]}
+      institutions={[
+        "Miembro del Colegio de Ginecólogos y Obstetras del Hospital Español “Profesor Dr. Alfonso Álvarez Bravo”.",
+        "Miembro de SOMEAL (Sociedad Médica del Ángeles Lomas).",
+        "Miembro de la sociedad médica del Hospital Español de México.",
+        "Miembro del Colegio Mexicano de Ginecología y Obstetricia.",
+      ]}
+      testimonials={[
+        {
+          text: "En el mejor momento de nuestras vidas y en otros no tan buenos, nos llevaste de la mano con tu paciencia y gentileza invaluable. Te queremos mucho.",
+          author: "",
+        },
+        {
+          text: "Para nuestra familia eres un superhéroe. Gracias a tu dedicación y entrega que siempre estuve monitoreada, que tus decisiones fueron las correctas, nos salvaste a mí y a mi bebé. Nunca vamos a terminar de agradecerte.",
+          author: "Gaby y Javier.",
+        },
+        {
+          text: "Justo en momentos cuando la humanidad atraviesa una época difícil, la vida te presenta a seres mágicos con poderes divinos y te devuelven la fe. Gracias Dr. Charúa, sin duda tienes un pedacito de Dios en tus manos.",
+          author: "",
+        },
+      ]}
+      institutionsColor="bg-beige-100"
+    />
+  </section>
+</Layout>
+
+<style></style>

@@ -1,0 +1,145 @@
+---
+import { Image } from "astro:assets";
+import TestimonialCarousel from "./TestimonialCarousel";
+
+interface Testimonial {
+  text: string;
+  author: string;
+}
+
+interface Props {
+  variant: "default" | "reversed" | "texture" | "reversed-texture";
+  photo: ImageMetadata;
+  name: string;
+  description: string;
+  education: string[];
+  institutions?: string[];
+  testimonials: Testimonial[];
+  educationColor?: string;
+  descriptionColor?: string;
+  testimonialColor?: string;
+  institutionsColor?: string;
+}
+
+const {
+  variant = "default", // 'default' | 'reversed' | 'texture' | 'reversed-texture'
+  photo,
+  name,
+  description,
+  education = [],
+  institutions = [],
+  testimonials = [],
+  educationColor = "bg-nude-400",
+  descriptionColor = "bg-blue-900 text-white",
+  testimonialColor = "bg-blue-900 text-white",
+  institutionsColor = "bg-nude-400",
+} = Astro.props;
+
+import imgTextura from "@assets/svg/svgTexture.svg";
+import type { ImageMetadata } from "astro";
+---
+
+<section class="py-16">
+  <div class="container mx-auto grid gap-6 md:grid-cols-3">
+    {
+      variant.includes("reversed") ? (
+        <>
+          <div class={`rounded-xl p-6 ${educationColor}`}>
+            <h3 class="font-title text-lg mb-4">Educación</h3>
+            <ul class="font-text space-y-2 text-sm md:text-base lg:text-lg">
+              {education.map((item: any) => (
+                <li set:html={item} />
+              ))}
+            </ul>
+          </div>
+
+          <div
+            class={`rounded-xl p-6 lg:py-16 ${descriptionColor} md:col-span-2 flex gap-6 items-center`}
+          >
+            <Image
+              src={photo}
+              alt={name}
+              class="size-32 lg:size-40 xl:size-56 rounded-full object-cover"
+            />
+            <div>
+              <h2 class="font-title text-xl lg:text-2xl mb-2">{name}</h2>
+              <p class="font-text text-sm md:text-base lg:text-lg">
+                {description}
+              </p>
+            </div>
+          </div>
+        </>
+      ) : (
+        <>
+          <div
+            class={`rounded-xl p-6 lg:py-16 md:col-span-2 flex gap-6 items-center ${descriptionColor}`}
+          >
+            <Image
+              src={photo}
+              alt={name}
+              class="size-32 lg:size-40 xl:size-56 rounded-full object-cover"
+            />
+            <div>
+              <h2 class="font-title text-xl lg:text-2xl mb-2">{name}</h2>
+              <p class="font-text text-sm md:text-base lg:text-lg">
+                {description}
+              </p>
+            </div>
+          </div>
+
+          <div class={`rounded-xl p-6 ${educationColor}`}>
+            <h3 class="font-title text-lg mb-4">Educación</h3>
+            <ul class="font-text space-y-2 text-sm md:text-base lg:text-lg">
+              {education.map((item: any) => (
+                <li set:html={item} />
+              ))}
+            </ul>
+          </div>
+        </>
+      )
+    }
+  </div>
+
+  <div class="container mx-auto grid gap-6 md:grid-cols-2 mt-6">
+    {
+      variant.includes("texture") ? (
+        <div class="bg-blue-900">
+          <Image
+            src={imgTextura}
+            alt="Decoración"
+            class="rounded-xl w-full h-full object-cover"
+          />
+        </div>
+
+
+        <TestimonialCarousel
+          client:load
+          testimonials={testimonials}
+          color={testimonialColor}
+        />
+      ) : (
+        <div class={`rounded-xl p-6 ${institutionsColor}`}>
+          <h3 class="font-title text-lg mb-4">
+            Instituciones a las que pertenece
+          </h3>
+          <ul class="font-text space-y-2 text-sm md:text-base lg:text-lg">
+            {institutions.map((item: any) => (
+              <li set:html={item} />
+            ))}
+          </ul>
+        </div>
+      )
+    }
+
+    {
+      variant.includes("default") && (
+        <TestimonialCarousel
+          client:load
+          testimonials={testimonials}
+          color={testimonialColor}
+        />
+      )
+    }
+
+  </div>
+</section>
