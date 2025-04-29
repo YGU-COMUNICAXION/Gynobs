@@ -1,0 +1,62 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Biko";
+  src: url("/fonts/Biko_Regular.otf");
+}
+
+@font-face {
+  font-family: "Arquitecta";
+  src: url("/fonts/Arquitecta.otf");
+}
+
+/* @custom-variant dark (&:where(.dark, .dark *)); */
+
+@theme {
+  /* Blue */
+  --color-blue-50: #f5f6f9;
+  --color-blue-100: #e8ebf1;
+  --color-blue-200: #d6dce7;
+  --color-blue-300: #bac3d6;
+  --color-blue-400: #98a6c2;
+  --color-blue-500: #7f8bb2;
+  --color-blue-600: #6d77a3;
+  --color-blue-700: #616894;
+  --color-blue-800: #53577a;
+  /* Primary */
+  --color-blue-900: #4a4e69;
+  --color-blue-950: #2d2f3e;
+
+  /* Nude */
+  --color-nude-50: #f9f7f7;
+  --color-nude-100: #f3eeed;
+  --color-nude-200: #eae0de;
+  --color-nude-300: #dbcac6;
+  /* Primary */
+  --color-nude-400: #c0a49e;
+  --color-nude-500: #ae8c85;
+  --color-nude-600: #96736c;
+  --color-nude-700: #7d5f58;
+  --color-nude-800: #69504b;
+  --color-nude-900: #594743;
+  --color-nude-950: #2e2321;
+
+  /* Beige */
+  --color-beige-50: #f8f7f4;
+  /* Primary */
+  --color-beige-100: #eae6db;
+  --color-beige-200: #dfd9c9;
+  --color-beige-300: #cbbfa6;
+  --color-beige-400: #b5a182;
+  --color-beige-500: #a58c6a;
+  --color-beige-600: #987b5e;
+  --color-beige-700: #7f654f;
+  --color-beige-800: #685344;
+  --color-beige-900: #554539;
+  --color-beige-950: #2d241d;
+
+  --font-title: "Biko", serif;
+  --font-body: "Arquitecta", sans-serif;
+  --font-montserrat: "Montserrat", sans-serif;
+}

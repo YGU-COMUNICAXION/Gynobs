@@ -1,0 +1,86 @@
+---
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Image } from "astro:assets";
+
+import svgLogoGynnobs from "@assets/svg/logoGynobs.svg";
+---
+
+<header
+  class="bg-white flex items-center justify-center
+  z-20 fixed top w-full left-0 right-0"
+>
+  <div
+    class="container flex items-center justify-between gap-4 p-4 lg:p-0 lg:py-4 md:px-0"
+  >
+    <div class="lg:hidden">
+      <Bars3Icon id="menu-icon" className="text-blue-900 size-8 lg:hidden" />
+      <XMarkIcon
+        id="close-icon"
+        className="text-blue-900 hidden size-8 lg:hidden"
+      />
+    </div>
+
+    <div
+      class="flex items-center justify-center lg:justify-start w-full lg:w-auto"
+    >
+      <Image class="h-8" src={svgLogoGynnobs} alt="Jonathan Bello" />
+    </div>
+
+    <nav
+      id="navigator-menu"
+      class="fixed -top-full left-0 right-0 lg:top-0 lg:left-auto lg:right-auto
+      flex flex-col items-center justify-center shadow lg:shadow-none p-6 py-8 lg:p-0 lg:py-0
+      transition-[top] duration-300 ease-in-out lg:transition-none
+      lg:static lg:flex-1 lg:flex lg:items-center lg:gap-4 lg:pt-1"
+      aria-label="Main navigation"
+    >
+      <ul
+        class="h-full container flex flex-col lg:flex-row items-start justify-end gap-8 lg:gap-8
+        [&>li>a]:text-blue-900 lg:[&>li]:w-28 lg:[&>li]:text-center
+        [&>li>a]:relative [&>li>a]:uppercase
+        font-montserrat font-semibold text-base lg:text-lg"
+      >
+        <li>
+          <a href={"/"}>Inicio</a>
+        </li>
+        <li>
+          <a href={"/doctores/"}>Doctores</a>
+        </li>
+        <li>
+          <a href={"/servicios/"}>Servicios</a>
+        </li>
+        <li>
+          <a href={"/contacto/"}>Contacto</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<script>
+  // Verificar que el DOM este completamente cargado antes de ejecutar el script con la validacion de viewtransiottions de astro
+  // con astro-load-page
+
+  document.addEventListener("astro:page-load", () => {
+    // Toggle navigation menu
+    const barsIcon = document.querySelector("#menu-icon");
+    const closeIcon = document.querySelector("#close-icon");
+    const navigatorMenu = document.querySelector("#navigator-menu");
+
+    if (navigatorMenu === null || barsIcon === null || closeIcon === null) {
+      throw new Error("Element not found");
+    }
+
+    barsIcon.addEventListener("click", () => {
+      barsIcon.classList.toggle("hidden");
+      closeIcon.classList.toggle("hidden");
+      navigatorMenu.classList.toggle("top-16");
+    });
+
+    closeIcon.addEventListener("click", () => {
+      closeIcon.classList.toggle("hidden");
+      barsIcon.classList.toggle("hidden");
+      navigatorMenu.classList.toggle("top-16");
+    });
+  });
+</script>
