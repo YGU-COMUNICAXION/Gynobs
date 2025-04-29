@@ -1,0 +1,84 @@
+---
+import { Image } from "astro:assets";
+
+import svgIconAdolescencia from "@assets/svg/iconoAdolescencia.svg";
+import svgIconEmbarazo from "@assets/svg/iconoEmbarazo.svg";
+import svgIconFamiliar from "@assets/svg/iconoFamilia.svg";
+import svgIconMatriz from "@assets/svg/iconoMatriz.svg";
+---
+
+<section class="bg-beige-100 container rounded-xl mt-14
+px-6 py-14 md:py-20 lg:py-24 xl:py-32">
+  <div class="mx-auto text-center">
+    <div class="max-w-2xl mx-auto mb-20 md:mb-24 lg:mb-32 xl:mb-40">
+      <h1
+        class="text-2xl md:text-4xl lg:text-5xl font-title font-normal text-[#464966] mb-5"
+      >
+        El espacio para cuidar de tu salud ginecológica
+      </h1>
+      <p
+        class="font-text
+      text-[#464966] text-lg lg:text-xl xl:text-2xl mb-10 max-w-2xl mx-auto"
+      >
+        Somos una clínica especializada en la salud de la mujer a lo largo de
+        todas sus etapas de vida
+      </p>
+    </div>
+
+    <div
+      class="grid grid-cols-2 sm:grid-cols-4 gap-6 justify-items-center"
+    >
+      <!-- Adolescencia -->
+      <div class="flex flex-col items-center text-center">
+        <div class="bg-blue-900 rounded-full p-4 mb-4">
+          <Image
+            src={svgIconAdolescencia}
+            alt="Adolescencia"
+            class="w-14 h-14"
+          />
+        </div>
+        <span class="text-sm md:text-base lg:text-lg text-[#464966]"
+          >Adolescencia</span
+        >
+      </div>
+
+      <!-- Planificación familiar -->
+      <div class="flex flex-col items-center text-center">
+        <div class="bg-blue-900 rounded-full p-4 mb-4">
+          <Image
+            src={svgIconFamiliar}
+            alt="Planificación familiar"
+            class="w-14 h-14"
+          />
+        </div>
+        <span class="text-sm md:text-base lg:text-lg text-[#464966]"
+          >Planificación familiar</span
+        >
+      </div>
+
+      <!-- Embarazo -->
+      <div class="flex flex-col items-center text-center">
+        <div class="bg-blue-900 rounded-full p-4 mb-4">
+          <Image src={svgIconEmbarazo} alt="Embarazo" class="w-14 h-14" />
+        </div>
+        <span class="text-sm md:text-base lg:text-lg text-[#464966]"
+          >Embarazo</span
+        >
+      </div>
+
+      <!-- Climatério y menopausia -->
+      <div class="flex flex-col items-center text-center">
+        <div class="bg-blue-900 rounded-full p-4 mb-4">
+          <Image
+            src={svgIconMatriz}
+            alt="Climaterio y menopausia"
+            class="w-14 h-14"
+          />
+        </div>
+        <span class="text-sm md:text-base lg:text-lg text-[#464966] text-center"
+          >Climaterio y menopausia</span
+        >
+      </div>
+    </div>
+  </div>
+</section>
