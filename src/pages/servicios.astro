@@ -1,0 +1,133 @@
+---
+import Layout from "@layouts/Layout.astro";
+
+import { getImage } from "astro:assets";
+import imgServiciosBanner from "@assets/img/imgConsulta.jpg";
+import { Image } from "astro:assets";
+import AgendaButton from "@components/AgendaButton.astro";
+import svgTelefono from "@assets/svg/iconoTel.svg";
+import svgWhatsapp from "@assets/svg/iconoWhats.svg";
+
+const bgImage = await getImage({ src: imgServiciosBanner });
+---
+
+<Layout title="Servicios" type="transparent">
+  <section
+    class="relative px-4 lg:px-0 -top-24 w-full bg-cover bg-center bg-no-repeat flex items-center min-h-[75vh]"
+    style={`background-image: url(${bgImage.src});`}
+  >
+    <!-- Overlay oscuro -->
+    <div class="absolute inset-0 bg-black/60"></div>
+
+    <!-- Contenido -->
+    <div
+      class="relative container z-10 mx-auto py-20 md:py-28 text-white grid md:grid-cols-2 gap-10 items-center"
+    >
+      <!-- Columna izquierda -->
+      <div class="text-left">
+        <h1
+          class="font-title text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-tight mb-6"
+        >
+          Atención integral para<br />
+          la salud ginecológica de<br />
+          la mujer
+        </h1>
+      </div>
+
+      <!-- Columna derecha -->
+      <div
+        class="font-text text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl leading-relaxed"
+      >
+        <p>
+          Nuestros servicios son especializados en ginecología y obstetricia,
+          aunque nuestro profesionalismo también nos ha llevado a convertirnos
+          en los médicos de cabecera para las familias de nuestras pacientes.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="relative -top-24 bg-nude-400 py-20 px-4 lg:px-0 w-full">
+    <div
+      class="container mx-auto grid grid-cols-2 md:grid-cols-4 justify-items-center gap-10 text-blue-900 font-medium"
+    >
+      <ul
+        class="font-text space-y-3 list-disc list-inside text-lg md:text-xl lg:text-2xl"
+      >
+        <li>Consultas</li>
+        <li>Citología</li>
+      </ul>
+      <ul
+        class="font-text space-y-3 list-disc list-inside text-lg md:text-xl lg:text-2xl"
+      >
+        <li>Papanicolaou</li>
+        <li>Ultrasonidos</li>
+      </ul>
+      <ul
+        class="font-text space-y-3 list-disc list-inside text-lg md:text-xl lg:text-2xl"
+      >
+        <li>Cultivos vaginales</li>
+        <li>Anticonceptivos</li>
+      </ul>
+      <ul
+        class="font-text space-y-3 list-disc list-inside text-lg md:text-xl lg:text-2xl"
+      >
+        <li>Vacunas</li>
+        <li>Estudios de sangre</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="bg-white py-20 px-6 mb-20">
+    <div class="container mx-auto grid md:grid-cols-2 gap-12 items-start">
+      <!-- Izquierda: texto y botón -->
+      <div class="">
+        <h2 class="font-title text-2xl md:text-3xl text-[#464966] mb-4">
+          ¿Cómo es agendar una primera consulta en Gynobs?
+        </h2>
+        <p
+          class="font-text text-nude-400 text-base md:text-lg lg:text-xl xl:text-2xl mb-6 max-w-md md:mb-8 lg:mb-12"
+        >
+          Los médicos que te atenderán son especialistas Certificados por el
+          Consejo Mexicano de Ginecología y Obstetricia.
+        </p>
+        <AgendaButton href="/contacto" text="AGENDA UNA CITA" />
+      </div>
+
+      <!-- Derecha: pasos -->
+      <div
+        class="bg-beige-100 rounded-xl p-6 lg:p-10 text-[#464966] font-text space-y-4 text-sm shadow-sm"
+      >
+        <p class="text-lg lg:text-xl mb-2">
+          • <strong>Paso 1.</strong> Comunícate al consultorio <br />
+          <div class="flex gap-4">
+            <span class="text-lg flex items-center gap-2">
+              <Image
+                class={"size-4"}
+                src={svgTelefono}
+                alt={"teléfono icono"}
+              /> 55-5247-0685
+            </span>
+            <span class="text-lg flex items-center gap-2">
+              <Image
+                class={"size-4"}
+                src={svgWhatsapp}
+                alt={"whatsapp icono"}
+              />
+              55-7864-1054
+            </span>
+          </div>
+        </p>
+        <p class="text-lg lg:text-xl mb-2">
+          • <strong>Paso 2.</strong> Te pediremos que llenes tu historia clínica
+          para que conozcamos tu perfil antes de la consulta.
+        </p>
+        <p class="text-lg lg:text-xl mb-2">
+          • <strong>Paso 3.</strong> Confirmas tu cita y nos vemos en el consultorio.
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style></style>

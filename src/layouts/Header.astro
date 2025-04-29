@@ -2,12 +2,20 @@
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Image } from "astro:assets";
 
-import svgLogoGynnobs from "@assets/svg/logoGynobs.svg";
+import svgLogoGynobs from "@assets/svg/logoGynobs.svg";
+import svgLogoGynobsWhite from "@assets/svg/logoGynobsWhite.svg";
+
+interface Props {
+  type?: "default" | "transparent";
+}
+
+const { type = "default" } = Astro.props;
 ---
 
 <header
-  class="bg-white flex items-center justify-center shadow
-  z-20 fixed top w-full left-0 right-0"
+  id="header"
+  class="flex items-center justify-center
+  z-20 fixed top w-full left-0 right-0 bg-white lg:bg-transparent transition-colors duration-300"
 >
   <div
     class="container relative flex items-center justify-between gap-4 p-4 lg:p-0 lg:py-8 md:px-0"
@@ -23,7 +31,19 @@ import svgLogoGynnobs from "@assets/svg/logoGynobs.svg";
     <div
       class="flex items-center justify-center lg:justify-start w-full lg:w-auto"
     >
-      <Image class="h-8" src={svgLogoGynnobs} alt="Jonathan Bello" />
+      <Image class=`h-8  lg:hidden` src={svgLogoGynobs} alt="logo Gynobs" />
+      <div class="hidden lg:block">
+        <Image
+          class=`h-8 ${type === "transparent" ? "hidden" : "block"} `
+          src={svgLogoGynobs}
+          alt="logo Gynobs"
+        />
+        <Image
+          class=`h-8 ${type === "transparent" ? "block" : "hidden"} `
+          src={svgLogoGynobsWhite}
+          alt="logo Gynobs"
+        />
+      </div>
     </div>
 
     <nav
@@ -31,14 +51,16 @@ import svgLogoGynnobs from "@assets/svg/logoGynobs.svg";
       class="fixed -top-full left-0 right-0 lg:top-0 lg:left-auto lg:right-auto
       flex flex-col items-center justify-center shadow lg:shadow-none p-6 py-8 lg:p-0 lg:py-0
       transition-[top] duration-300 ease-in-out lg:transition-none
-      lg:static lg:flex-1 lg:flex lg:items-center lg:gap-4 lg:pt-1 bg-white"
+      lg:static lg:flex-1 lg:flex lg:items-center lg:gap-4 lg:pt-1 bg-white lg:bg-transparent"
       aria-label="Main navigation"
     >
       <ul
-        class="h-full container flex flex-col lg:flex-row items-start justify-end gap-8 lg:gap-8
+        class=`h-full container flex flex-col lg:flex-row items-start justify-end gap-8 lg:gap-8
         [&>li>a]:text-blue-900 lg:[&>li]:w-28 lg:[&>li]:text-center
         [&>li>a]:relative [&>li>a]:uppercase
-        font-montserrat font-semibold text-base lg:text-lg"
+        font-montserrat font-base text-base lg:text-lg
+        ${type === "transparent" ? "lg:[&>li>a]:text-beige-100" : ""}
+        `
       >
         <li>
           <a href={"/"}>Inicio</a>
@@ -57,6 +79,15 @@ import svgLogoGynnobs from "@assets/svg/logoGynobs.svg";
   </div>
 </header>
 
+<style>
+  @reference "../styles/global.css";
+
+  /* Colocar linea color roja del link activo por debajo del link, pero en desktop colocar la linea encima del link */
+  #navigator-menu a:is(.active) {
+    font-weight: 600;
+  }
+</style>
+
 <script>
   // Verificar que el DOM este completamente cargado antes de ejecutar el script con la validacion de viewtransiottions de astro
   // con astro-load-page
@@ -66,6 +97,8 @@ import svgLogoGynnobs from "@assets/svg/logoGynobs.svg";
     const barsIcon = document.querySelector("#menu-icon");
     const closeIcon = document.querySelector("#close-icon");
     const navigatorMenu = document.querySelector("#navigator-menu");
+    const navigatorLinks = document.querySelector("#navigator-menu ul");
+    const header = document.querySelector("#header");
 
     if (navigatorMenu === null || barsIcon === null || closeIcon === null) {
       throw new Error("Element not found");
@@ -81,6 +114,31 @@ import svgLogoGynnobs from "@assets/svg/logoGynobs.svg";
       closeIcon.classList.toggle("hidden");
       barsIcon.classList.toggle("hidden");
       navigatorMenu.classList.toggle("top-16");
+    });
+
+    const path = window.location.pathname;
+    const links = navigatorLinks?.querySelectorAll("a");
+
+    links?.forEach((link) => {
+      if (link.pathname === path) {
+        console.log(link.pathname);
+        link.classList.add("active");
+      }
+    });
+
+    // Si el scroll baja el menu se le da backgrioun white
+    window.addEventListener("scroll", () => {
+      if (window.scrollY >= 50) {
+        header?.classList.add("lg:bg-white");
+        links?.forEach((link) => {
+          link.classList.add("lg:!text-blue-900");
+        });
+      } else {
+        header?.classList.remove("lg:bg-white");
+        links?.forEach((link) => {
+          link.classList.remove("lg:!text-blue-900");
+        });
+      }
     });
   });
 </script>
