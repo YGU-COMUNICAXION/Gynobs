@@ -32,13 +32,16 @@ const { type = "default" } = Astro.props;
       class="flex items-center justify-center lg:justify-start w-full lg:w-auto"
     >
       <Image class=`h-8  lg:hidden` src={svgLogoGynobs} alt="logo Gynobs" />
+
       <div class="hidden lg:block">
         <Image
+          id={"logo-gynobs"}
           class=`h-8 ${type === "transparent" ? "hidden" : "block"} `
           src={svgLogoGynobs}
           alt="logo Gynobs"
         />
         <Image
+          id={"logo-gynobs-white"}
           class=`h-8 ${type === "transparent" ? "block" : "hidden"} `
           src={svgLogoGynobsWhite}
           alt="logo Gynobs"
@@ -126,17 +129,33 @@ const { type = "default" } = Astro.props;
       }
     });
 
+    const logoGynobs = document.querySelector("#logo-gynobs");
+    const logoGynobsWhite = document.querySelector("#logo-gynobs-white");
+
+    if (logoGynobs === null || logoGynobsWhite === null) {
+      throw new Error("Element not found");
+    }
+
+    // Solo si se encuentra en la pagina de servicios se le da el color beige al menu
     // Si el scroll baja el menu se le da backgrioun white
     window.addEventListener("scroll", () => {
       if (window.scrollY >= 50) {
         header?.classList.add("lg:bg-white");
         links?.forEach((link) => {
           link.classList.add("lg:!text-blue-900");
+          if (path === "/servicios/") {
+            logoGynobs.classList.remove("hidden");
+            logoGynobsWhite.classList.add("hidden");
+          }
         });
       } else {
         header?.classList.remove("lg:bg-white");
         links?.forEach((link) => {
           link.classList.remove("lg:!text-blue-900");
+          if (path === "/servicios/") {
+            logoGynobs.classList.add("hidden");
+            logoGynobsWhite.classList.remove("hidden");
+          }
         });
       }
     });
