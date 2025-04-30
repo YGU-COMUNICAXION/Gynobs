@@ -1,0 +1,18 @@
+---
+import { Image } from "astro:assets";
+import svgWhatsapp from "@assets/svg/iconoWhats.svg";
+
+// Puedes personalizar el enlace aquí o recibirlo como prop
+const href = "https://wa.me/525578641054"; // Número con lada internacional
+const label = "Enviar mensaje por WhatsApp";
+---
+
+<a
+  href={href}
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label={label}
+  class="fixed z-50 bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg transition-all duration-300 animate-bounce flex items-center justify-center"
+>
+  <Image src={svgWhatsapp} alt="WhatsApp" class="w-6 h-6" />
+</a>

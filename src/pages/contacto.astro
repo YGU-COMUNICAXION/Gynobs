@@ -14,13 +14,14 @@ import svgUbicacion from "@assets/svg/iconoMap.svg";
       <!-- Columna izquierda: texto + datos + botón -->
       <div class="text-blue-900 font-text text-base w-full">
         <div class="max-w-2xl">
-          <h1 class="text-2xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl mb-8">
+          <h1
+            class="text-2xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl mb-8"
+          >
             Agenda una cita para realizarte un estudio o atenderte con alguno de
             nuestros médicos.
           </h1>
 
-          <div class="text-lg md:text-xl mb-4">
-
+          <div class="flex flex-col gap-3 text-lg md:text-xl mb-4">
             <p class="flex items-center gap-4">
               <Image class="size-5" src={svgUbicacion} alt={"pin de mapa"} />
               <span
@@ -29,17 +30,25 @@ import svgUbicacion from "@assets/svg/iconoMap.svg";
               >
             </p>
 
-            <p class="flex items-center gap-4">
+            <a
+              href="tel:+5552470685"
+              target="_blank"
+              class="flex items-center gap-4 hover:underline"
+            >
               <Image class="size-5" src={svgTelefono} alt="Teléfono" /> 55-5247-0685
-            </p>
+            </a>
 
-            <p class="flex items-center gap-4">
+            <a
+              href="https://wa.me/5578641054"
+              target="_blank"
+              class="flex gap-4 items-center hover:underline"
+            >
               <Image class="size-5" src={svgWhatsapp} alt="WhatsApp" /> 55-7864-1054
-            </p>
+            </a>
           </div>
-
-          <!-- <AgendaButton href="/contacto" text="AGENDA UNA CITA" /> -->
         </div>
+
+        <!-- <AgendaButton href="/contacto" text="AGENDA UNA CITA" /> -->
       </div>
 
       <!-- Columna derecha: mapa -->
