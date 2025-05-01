@@ -5,7 +5,10 @@ import logoHojas from "@assets/svg/logoHojas.svg";
 import { Image } from "astro:assets";
 import DoctorProfile from "@components/DoctorProfile.astro";
 
-import imgDrRodrigo from "@assets/img/imgDrRodrigo.png";
+import imgFichaRodrigo from "@assets/img/imgFichaRodrigo.png";
+import imgFichaMaria from "@assets/img/imgFichaMaria.png";
+import imgFichaElias from "@assets/img/imgFichaElias.png";
+
 import imgNull from "@assets/img/imgNull.png";
 ---
 
@@ -32,7 +35,7 @@ import imgNull from "@assets/img/imgNull.png";
     <DoctorProfile
       variant="default"
       name="Dr. Rodrigo Zamora Escudero"
-      photo={imgDrRodrigo}
+      photo={imgFichaRodrigo}
       description="El Dr. Rodrigo Zamora es ginecólogo obstetra, miembro del Cuerpo Médico del Hospital Ángeles Lomas y profesor de posgrado en Ginecología y Obstetricia del mismo hospital junto a la UNAM. La relación con sus pacientes se caracteriza por ser cercana, profesional y brindar mucha confianza y tranquilidad a lo largo de cada proceso."
       education={[
         "<strong>Ginecología y obstetricia</strong><br/>Universidad Nacional Autónoma de México<br/>Céd. Especialidad 0011012",
@@ -64,7 +67,7 @@ import imgNull from "@assets/img/imgNull.png";
     <DoctorProfile
       variant="reversed-texture"
       name="Dra. María José Robles Menchero"
-      photo={imgNull}
+      photo={imgFichaMaria}
       description="La Dra. María José es ginecóloga obstetra en el Hospital Ángeles Lomas. Se distingue por su compromiso con el bienestar de sus pacientes. Su profesionalismo, toque humano, y comunicación clara generan un ambiente de confianza. Además, le gusta escuchar a sus pacientes con atención, empatizar con su situación y brindar explicaciones detalladas para que la atención sea cercana."
       education={[
         "<strong>Ginecología y obstetricia</strong><br/>Céd. Especialidad 12451398<br/>Universidad Nacional Autónoma de México.",
@@ -92,7 +95,7 @@ import imgNull from "@assets/img/imgNull.png";
     <DoctorProfile
       variant="default"
       name="Dr. Elías Charúa Levy"
-      photo={imgNull}
+      photo={imgFichaElias}
       description="El Dr. Charúa es ginecólogo obstetra en el Hospital Ángeles Lomas y el Hospital Español de México, además de realizar Cirugía de Mínima Invasión. Su consulta se caracteriza por ser respetuosa con sus consultantes, brinda particular atención a cada uno de los procesos que debe realizar y se desempeña con total vocación."
       education={[
         "<strong>Ginecología y obstetricia</strong><br/>Céd. Especialidad 8536936<br/>Hospital Español de México",
