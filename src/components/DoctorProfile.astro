@@ -8,6 +8,7 @@ interface Testimonial {
 }
 
 interface Props {
+  id: string;
   variant: "default" | "reversed" | "texture" | "reversed-texture";
   photo: ImageMetadata;
   name: string;
@@ -22,6 +23,7 @@ interface Props {
 }
 
 const {
+  id,
   variant = "default", // 'default' | 'reversed' | 'texture' | 'reversed-texture'
   photo,
   name,
@@ -39,7 +41,7 @@ import imgTextura from "@assets/svg/svgTexture.svg";
 import type { ImageMetadata } from "astro";
 ---
 
-<section class="py-16">
+<section class="mb-16" id={id}>
   <div class="container mx-auto grid gap-6 md:grid-cols-3">
     {
       variant.includes("reversed") ? (
