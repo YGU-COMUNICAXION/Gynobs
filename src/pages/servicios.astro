@@ -7,6 +7,7 @@ import { Image } from "astro:assets";
 import AgendaButton from "@components/AgendaButton.astro";
 import svgTelefono from "@assets/svg/iconoTel.svg";
 import svgWhatsapp from "@assets/svg/iconoWhats.svg";
+import svgLogo from "@assets/svg/logoHojas.svg";
 
 const bgImage = await getImage({ src: imgServiciosBanner });
 ---
@@ -49,7 +50,7 @@ const bgImage = await getImage({ src: imgServiciosBanner });
 
   <section class="relative -top-24 bg-nude-400 py-20 px-4 lg:px-0 w-full">
     <div
-      class="container mx-auto grid grid-cols-2 md:grid-cols-4 justify-items-center gap-10 text-blue-900 font-medium"
+      class="container mx-auto grid grid-cols-2 md:grid-cols-4 justify-items-center gap-3 lg:gap-10 text-blue-900 font-medium"
     >
       <ul
         class="w-full md:w-auto font-text space-y-3 list-disc list-inside text-lg md:text-xl lg:text-2xl"
@@ -78,7 +79,15 @@ const bgImage = await getImage({ src: imgServiciosBanner });
     </div>
   </section>
 
-  <section class="bg-white py-20 px-6 mb-20">
+  <section>
+    <Image
+      src={svgLogo}
+      alt="Decorativo"
+      class="-top-8 relative mb-4 lg:mb-0"
+    />
+  </section>
+
+  <section class="bg-white py-0 lg:py-10 px-6 mb-20">
     <div class="container mx-auto grid md:grid-cols-2 gap-12 items-start">
       <!-- Izquierda: texto y botón -->
       <div class="">
